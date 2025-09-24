@@ -1,0 +1,25 @@
+@"
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+    <h1>Register Student</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Student</button>
+    </form>
+
+    <h2>Registered Students</h2>
+    <ul>
+        {% for student in students %}
+            <li>{{ student.name }} (Age: {{ student.age }})</li>
+        {% empty %}
+            <li>No students registered yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+"@ | Out-File -FilePath templates\students\register.html -Encoding utf8
